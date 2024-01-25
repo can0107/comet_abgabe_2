@@ -16,13 +16,13 @@ for (i in 1:iterations) {
   }
 }
 wahrscheinlichkeit <- counter / iterations   #berechnet die relative Haeufigkeit der Faelle, in denen mindestens eine Person ihr eigenes Geschenk erhaelt
-wahrscheinlichkeit   #gibt die Wahrscheinlichkeit/das Ergebnis an
+wahrscheinlichkeit   #gibt die Wahrscheinlichkeit/ das Ergebnis an
 
 
 ### Aufgabe 3.2 & 3.3: Von der Simulation zu einer Funktion 
 
 wichtel_unglueck <- function(n, k, iterationen = 1000) {   #n = Anzahl der Personen & k = Anzahl Personen, die ihr eigens mitgebrachtes Geschenk erhalten
-  if (!is.numeric(n) | !is.numeric(k) | !is.numeric(iterationen) | n<0 | k<0 | iterationen<0) {   #Nichtnegativit?tsbedingung & nur numerische Variablen werden akzeptiert
+  if (!is.numeric(n) | !is.numeric(k) | !is.numeric(iterationen) | n<0 | k<0 | iterationen<0) {   #Nichtnegativitaetsbedingung & nur numerische Variablen werden akzeptiert
     stop("error")
   }                                                         
   geschenke <- 1:n
@@ -136,21 +136,21 @@ summary(filtered.data)
 ggplot(filtered.data) +
   geom_point(aes(x = mean_temperature, y = count), col = "purple") +
   xlab("mittlere Temperatur") +
-  ylab("Anzahl ausgeliehener Fahrr?der") +
-  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrr?der & der Temperatur") +
+  ylab("Anzahl ausgeliehener Fahrraeder") +
+  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrraeder & der Temperatur") +
   theme_bw()
 
 ggplot(filtered.data) +
   geom_point(aes(x = precipitation, y = count), col = "red") +
   xlab("Niederschlagsmenge") +
-  ylab("Anzahl ausgeliehener Fahrr?der") +
-  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrr?der & der Niederschlagsmenge") +
+  ylab("Anzahl ausgeliehener Fahrraeder") +
+  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrraeder & der Niederschlagsmenge") +
   theme_bw()
 
 ggplot(filtered.data) +
   geom_point(aes(x = wind_speed, y = count), col = "brown") +
   xlab("Windgeschwindigkeit") +
-  ylab("Anzahl ausgeliehener Fahrr?der") +
+  ylab("Anzahl ausgeliehener Fahrraeder") +
   ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrr?der & der Windgeschwindigkeit") +
   theme_bw()
 
@@ -159,8 +159,8 @@ filtered.data$date <- as.Date(filtered.data$date, format = "%Y-%m-%d")
 ggplot(filtered.data) +
   geom_line(aes(x = date, y = count), col = "blue") +
   xlab("Datum") +
-  ylab("Anzahl ausgeliehener Fahrr?der") +
-  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrr?der & der Zeit") +
+  ylab("Anzahl ausgeliehener Fahrraeder") +
+  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrraeder & der Zeit") +
   theme_bw()
 
 ### alternativ auch moeglich, aber mehr Aufwand 
@@ -168,8 +168,8 @@ ggplot(filtered.data) +
 ggplot(data = filter(data.frame, station == "Washington & Independence Ave SW/HHS")) +
   geom_point(aes(x = mean_temperature, y = count), col = "purple") +
   xlab("mittlere Temperatur") +
-  ylab("Anzahl ausgeliehener Fahrr?der") +
-  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrr?der & der Temperatur") +
+  ylab("Anzahl ausgeliehener Fahrraeder") +
+  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrraeder & der Temperatur") +
   theme_bw()
 
 
@@ -179,18 +179,18 @@ ggplot(data = filter(filtered.data, precipitation == 0)) +
   geom_point(aes(x = mean_temperature, y = count), col = "red") +
   xlab("mittlere Temperatur") +
   xlim(0, 80) +
-  ylab("Anzahl ausgeliehener Fahrr?der") +
+  ylab("Anzahl ausgeliehener Fahrraeder") +
   ylim(0, 200) +
-  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrr?der & der Temperatur (kein Regen)") +
+  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrraeder & der Temperatur (kein Regen)") +
   theme_bw()
 
 ggplot(data = filter(filtered.data, precipitation > 0)) +
   geom_point(aes(x = mean_temperature, y = count), col = "red") +
   xlab("mittlere Temperatur") +
   xlim(0, 80) +
-  ylab("Anzahl ausgeliehener Fahrr?der") +
+  ylab("Anzahl ausgeliehener Fahrraeder") +
   ylim(0, 200) +
-  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrr?der & der Temperatur (Regen)") +
+  ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrraeder & der Temperatur (Regen)") +
   theme_bw()
 
 
@@ -198,7 +198,7 @@ ggplot(data = filter(filtered.data, precipitation > 0)) +
 
 ggplot(filtered.data) +
   geom_histogram(aes(x = count, y = after_stat(density)), col = "black", fill = "yellow") +
-  xlab("Anzahl ausgeliehener Fahrr?der") +
+  xlab("Anzahl ausgeliehener Fahrraeder") +
   ggtitle("Verteilung der Anzahl ausgeliehener Fahrraeder") +
   theme_bw()
 
