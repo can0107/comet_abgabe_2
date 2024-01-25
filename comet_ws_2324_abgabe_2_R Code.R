@@ -1,4 +1,4 @@
-######################### Abgabe 2 #########################
+########################### Abgabe 2 ###########################
 
 #################### Aufgabe 3: Programmieren in R ####################
 ### Aufgabe 3.1 Simulation: Wie wahrscheinlich ist es, dass beim Wichteln unter 10 Personen mindestens eine Person das eigene Geschenk bekommt?
