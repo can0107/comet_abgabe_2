@@ -134,8 +134,8 @@ head(filtered.data)
 summary(filtered.data)
 
 Grafik_1 <- ggplot(filtered.data) +
-  geom_point(aes(x = mean_temperature, y = count), col = "purple") +
-  xlab("mittlere Temperatur") +
+  geom_point(aes(x = mean_temperature, y = count), col = "blue") +
+  xlab("mittlere Temperatur in Fahrenheit") +
   ylab("Anzahl ausgeliehener Fahrraeder") +
   ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrraeder & der Temperatur") +
   theme_bw()
@@ -143,8 +143,8 @@ Grafik_1
 ggsave(file = "./Grafik_1.pdf", plot = Grafik_1, width = 8, height = 6)
 
 Grafik_2 <- ggplot(filtered.data) +
-  geom_point(aes(x = precipitation, y = count), col = "red") +
-  xlab("Niederschlagsmenge") +
+  geom_point(aes(x = precipitation, y = count), col = "blue") +
+  xlab("Niederschlag in mm") +
   ylab("Anzahl ausgeliehener Fahrraeder") +
   ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrraeder & der Niederschlagsmenge") +
   theme_bw()
@@ -152,8 +152,8 @@ Grafik_2
 ggsave(file = "./Grafik_2.pdf", plot = Grafik_2, width = 8, height = 6)
 
 Grafik_3 <- ggplot(filtered.data) +
-  geom_point(aes(x = wind_speed, y = count), col = "brown") +
-  xlab("Windgeschwindigkeit") +
+  geom_point(aes(x = wind_speed, y = count), col = "blue") +
+  xlab("Windgeschwindigkeit in m/s") +
   ylab("Anzahl ausgeliehener Fahrraeder") +
   ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrraeder & der Windgeschwindigkeit") +
   theme_bw()
@@ -174,8 +174,8 @@ ggsave(file = "./Grafik_4.pdf", plot = Grafik_4, width = 8, height = 6)
 ### alternativ auch moeglich, aber mehr Aufwand 
 
 ggplot(data = filter(data.frame, station == "Washington & Independence Ave SW/HHS")) +
-  geom_point(aes(x = mean_temperature, y = count), col = "purple") +
-  xlab("mittlere Temperatur") +
+  geom_point(aes(x = mean_temperature, y = count), col = "blue") +
+  xlab("mittlere Temperatur in Fahrenheit") +
   ylab("Anzahl ausgeliehener Fahrraeder") +
   ggtitle("Zusammenhang zwischen Anzahl ausgeliehener Fahrraeder & der Temperatur") +
   theme_bw()
@@ -184,8 +184,8 @@ ggplot(data = filter(data.frame, station == "Washington & Independence Ave SW/HH
 ### Aufgabe 4.2:
 
 Grafik_5 <- ggplot(data = filter(filtered.data, precipitation == 0)) +
-  geom_point(aes(x = mean_temperature, y = count), col = "red") +
-  xlab("mittlere Temperatur") +
+  geom_point(aes(x = mean_temperature, y = count), col = "blue") +
+  xlab("mittlere Temperatur in Fahrenheit") +
   xlim(0, 80) +
   ylab("Anzahl ausgeliehener Fahrraeder") +
   ylim(0, 200) +
@@ -195,8 +195,8 @@ Grafik_5
 ggsave(file = "./Grafik_5.pdf", plot = Grafik_5, width = 8, height = 6)
 
 Grafik_6 <- ggplot(data = filter(filtered.data, precipitation > 0)) +
-  geom_point(aes(x = mean_temperature, y = count), col = "red") +
-  xlab("mittlere Temperatur") +
+  geom_point(aes(x = mean_temperature, y = count), col = "blue") +
+  xlab("mittlere Temperatur in Fahrenheit") +
   xlim(0, 80) +
   ylab("Anzahl ausgeliehener Fahrraeder") +
   ylim(0, 200) +
@@ -209,36 +209,36 @@ ggsave(file = "./Grafik_6.pdf", plot = Grafik_6, width = 8, height = 6)
 ### Aufgabe 4.3:
 
 Grafik_7 <- ggplot(filtered.data) +
-  geom_histogram(aes(x = count, y = after_stat(density)), col = "black", fill = "yellow") +
+  geom_histogram(aes(x = count, y = after_stat(density)), col = "black", fill = "light blue") +
   xlab("Anzahl ausgeliehener Fahrraeder") +
   ggtitle("Verteilung der Anzahl ausgeliehener Fahrraeder") +
   theme_bw()
 Grafik_7
-ggsave(file = "./Grafik_7.pdf", plot = Grafik_7, width = 6, height = 4)
+ggsave(file = "./Grafik_7.pdf", plot = Grafik_7, width = 8, height = 6)
 
 Grafik_8 <- ggplot(filtered.data) +
-  geom_histogram(aes(x = mean_temperature, y = after_stat(density)), col = "black", fill = "yellow") +
-  xlab("mittlere Temperatur") +
+  geom_histogram(aes(x = mean_temperature, y = after_stat(density)), col = "black", fill = "light blue") +
+  xlab("mittlere Temperatur in Fahrenheit") +
   ggtitle("Verteilung der mittleren Temperatur") +
   theme_bw()
 Grafik_8
-ggsave(file = "./Grafik_8.pdf", plot = Grafik_8, width = 6, height = 4)
+ggsave(file = "./Grafik_8.pdf", plot = Grafik_8, width = 8, height = 6)
 
 Grafik_9 <- ggplot(filtered.data) +
-  geom_histogram(aes(x = precipitation, y = after_stat(density)), col = "black", fill = "yellow") +
-  xlab("Niederschlag") +
+  geom_histogram(aes(x = precipitation, y = after_stat(density)), col = "black", fill = "light blue") +
+  xlab("Niederschlag in mm") +
   ggtitle("Verteilung der Niederschlagsmenge") +
   theme_bw()
 Grafik_9
-ggsave(file = "./Grafik_9.pdf", plot = Grafik_9, width = 6, height = 4)
+ggsave(file = "./Grafik_9.pdf", plot = Grafik_9, width = 8, height = 6)
 
 Grafik_10 <- ggplot(filtered.data) +
-  geom_histogram(aes(x = wind_speed, y = after_stat(density)), col = "black", fill = "yellow") +
-  xlab("Windgeschwindigkeit") +
+  geom_histogram(aes(x = wind_speed, y = after_stat(density)), col = "black", fill = "light blue") +
+  xlab("Windgeschwindigkeit in m/s") +
   ggtitle("Verteilung der Windgeschwindigkeit") +
   theme_bw()
 Grafik_10
-ggsave(file = "./Grafik_10.pdf", plot = Grafik_10, width = 6, height = 4)
+ggsave(file = "./Grafik_10.pdf", plot = Grafik_10, width = 8, height = 6)
   
 
 ### Aufgabe 4.4:
@@ -255,7 +255,7 @@ filtered.data$Jahreszeit[which(filtered.data$date <= as.Date("2022-03-19") & fil
 
 
 fruehling <- ggplot(filtered.data[filtered.data$Jahreszeit=="Fruehling",]) +
-  geom_density(aes(x = count), col = "dark green") +
+  geom_density(aes(x = count), col = "blue") +
   xlab("Anzahl ausgeliehener Fahrraeder") +
   xlim(0, 180) +
   ggtitle("Fruehling") +
@@ -270,14 +270,14 @@ sommer <- ggplot(filtered.data[filtered.data$Jahreszeit=="Sommer",]) +
   theme_bw()
 
 herbst <- ggplot(filtered.data[filtered.data$Jahreszeit=="Herbst",]) +
-  geom_density(aes(x = count), col = "purple") +
+  geom_density(aes(x = count), col = "blue") +
   xlab("Anzahl ausgeliehener Fahrraeder") +
   xlim(0, 180) +
   ggtitle("Herbst") +
   theme_bw()
 
 winter <- ggplot(filtered.data[filtered.data$Jahreszeit=="Winter",]) +
-  geom_density(aes(x = count), col = "red") +
+  geom_density(aes(x = count), col = "blue") +
   xlab("Anzahl ausgeliehener Fahrraeder") +
   xlim(0, 180) +
   ylim(0, 0.020) +
@@ -285,7 +285,7 @@ winter <- ggplot(filtered.data[filtered.data$Jahreszeit=="Winter",]) +
   theme_bw()
 
 Grafik_11 <- grid.arrange(fruehling, sommer, herbst, winter, nrow = 2, ncol = 2)
-ggsave(file = "./Grafik_11.pdf", plot = Grafik_11, width = 9, height = 7)
+ggsave(file = "./Grafik_11.pdf", plot = Grafik_11, width = 10, height = 8)
 
 ### Aufgabe 4.5:
 
@@ -293,12 +293,12 @@ library(plotly)
 
 Grafik_12 <- plot_ly(data = filtered.data, x = ~mean_temperature, y = ~wind_speed, z = ~count,
                         type = "scatter3d", mode = "markers", marker = list(size = 5, opacity = 0.5), color = ~count,
-                        text = ~paste("Datum:", date, "<br>Anzahl ausgeliehener Fahrraeder:", count, "<br>Windgeschwindigkeit:", wind_speed,
-                                      "<br>Niederschlag:", precipitation, "<br>Mittlere Temperatur:", mean_temperature),
+                        text = ~paste("Datum:", date, "<br>Anzahl ausgeliehener Fahrraeder:", count, "<br>Windgeschwindigkeit in m/s:", wind_speed,
+                                      "<br>Niederschlag in mm:", precipitation, "<br>Mittlere Temperatur in Fahrenheit:", mean_temperature),
                         hoverinfo = "text")
 
-Grafik_12 %>% layout(scene = list(xaxis = list(title = "Mittlere Temperatur"),
-                                     yaxis = list(title = "Windgeschwindigkeit"),
+Grafik_12 %>% layout(scene = list(xaxis = list(title = "Mittlere Temperatur in Fahrenheit"),
+                                     yaxis = list(title = "Windgeschwindigkeit in m/s"),
                                      zaxis = list(title = "Anzahl ausgeliehener Fahrraeder")))
 Grafik_12
 
