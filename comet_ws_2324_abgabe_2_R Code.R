@@ -3,7 +3,7 @@
 #################### Aufgabe 3: Programmieren in R ####################
 ### Aufgabe 3.1 Simulation: Wie wahrscheinlich ist es, dass beim Wichteln unter 10 Personen mindestens eine Person das eigene Geschenk bekommt?
 
-iterations <- 100000   #Anzahl der Simulationen
+iterations <- 10000   #Anzahl der Simulationen
 n <- 10   #Anzahl der Personen
 geschenke <- 1:n   #Anzahl der Geschenke = Anzahl der Personen
 counter <- 0   #Zaehler fuer die Faelle, in denen mindestens eine Person ihr eigenes Geschenk erhaelt
@@ -239,7 +239,7 @@ Grafik_10 <- ggplot(filtered.data) +
   theme_bw()
 Grafik_10
 ggsave(file = "./Grafik_10.pdf", plot = Grafik_10, width = 8, height = 6)
-  
+
 
 ### Aufgabe 4.4:
 
@@ -253,39 +253,15 @@ filtered.data$Jahreszeit[which(filtered.data$date <= as.Date("2022-09-22") & fil
 filtered.data$Jahreszeit[which(filtered.data$date <= as.Date("2022-11-30") & filtered.data$date >= as.Date("2022-09-23"))] <- "Herbst"
 filtered.data$Jahreszeit[which(filtered.data$date <= as.Date("2022-03-19") & filtered.data$date >= as.Date("2022-01-01"))] <- "Winter"
 
-
-fruehling <- ggplot(filtered.data[filtered.data$Jahreszeit=="Fruehling",]) +
-  geom_density(aes(x = count), col = "blue") +
+Jahreszeiten <- ggplot(filtered.data) +
+  geom_density(aes(x = count, color = Jahreszeit, fill = Jahreszeit), alpha = 0.5) +
   xlab("Anzahl ausgeliehener Fahrraeder") +
   xlim(0, 180) +
-  ggtitle("Fruehling") +
+  ggtitle("Anzahl ausgeliehener Fahrraeder nach Jahreszeiten") +
   theme_bw()
+Jahreszeiten
+ggsave(file = "./Grafik_11.pdf", plot = Jahreszeiten, width = 10, height = 8)
 
-sommer <- ggplot(filtered.data[filtered.data$Jahreszeit=="Sommer",]) +
-  geom_density(aes(x = count), col = "blue") +
-  xlab("Anzahl ausgeliehener Fahrraeder") +
-  xlim(0, 180) +
-  ylim(0, 0.020) +
-  ggtitle("Sommer") +
-  theme_bw()
-
-herbst <- ggplot(filtered.data[filtered.data$Jahreszeit=="Herbst",]) +
-  geom_density(aes(x = count), col = "blue") +
-  xlab("Anzahl ausgeliehener Fahrraeder") +
-  xlim(0, 180) +
-  ggtitle("Herbst") +
-  theme_bw()
-
-winter <- ggplot(filtered.data[filtered.data$Jahreszeit=="Winter",]) +
-  geom_density(aes(x = count), col = "blue") +
-  xlab("Anzahl ausgeliehener Fahrraeder") +
-  xlim(0, 180) +
-  ylim(0, 0.020) +
-  ggtitle("Winter") +
-  theme_bw()
-
-Grafik_11 <- grid.arrange(fruehling, sommer, herbst, winter, nrow = 2, ncol = 2)
-ggsave(file = "./Grafik_11.pdf", plot = Grafik_11, width = 10, height = 8)
 
 ### Aufgabe 4.5:
 
@@ -301,6 +277,10 @@ Grafik_12 %>% layout(scene = list(xaxis = list(title = "Mittlere Temperatur in F
                                      yaxis = list(title = "Windgeschwindigkeit in m/s"),
                                      zaxis = list(title = "Anzahl ausgeliehener Fahrraeder")))
 Grafik_12
+
+
+
+
 
 
 
